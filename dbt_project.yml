@@ -34,9 +34,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   my_new_project: # <-- Name of the project. If you renamed your project you have to change this as well
     
-    # Applies to all files under models/example/
-    example:
-      materialized: view
+    staging:
+      +materialized: view
+      +schema: stg
+
+    marts:
+      +materialized: table
+      +schema: marts
+
+
 
 
 seeds:
