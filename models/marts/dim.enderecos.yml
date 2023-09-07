@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_localizacoes
+  - name: dim_enderecos
     description: dimensão de localizações da adventure works
     columns:
       - name: id_endereco

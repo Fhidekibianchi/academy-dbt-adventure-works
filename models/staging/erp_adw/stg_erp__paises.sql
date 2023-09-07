@@ -1,8 +1,8 @@
 WITH
 source_country AS (
     SELECT
-        countryregioncode AS codigo_pais 
-        ,name as pais
+         CAST(countryregioncode AS INT) AS codigo_pais 
+        ,CAST(name AS STRING) as pais
     FROM {{ source('erp', 'countryregion') }}
 )
 SELECT * 

@@ -1,12 +1,12 @@
 WITH 
 source_states AS (
     SELECT 
-        stateprovinceid AS id_estado
-        ,territoryid AS id_territorio
-        ,stateprovincecode AS codigo_estado
-        ,countryregioncode AS codigo_pais
-        --,isonlystateprovinceflag
-        ,name AS estado        
+         CAST(stateprovinceid AS INT) AS id_estado
+        ,CAST(territoryid AS INT) AS id_territorio
+        ,CAST(stateprovincecode AS STRING) AS codigo_estado
+        ,CAST(countryregioncode AS STRING) AS codigo_pais
+        --isonlystateprovinceflag
+        ,CAST(name AS STRING) AS estado        
         --,rowguid
         --,modifieddate
 

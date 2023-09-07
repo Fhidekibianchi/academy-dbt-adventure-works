@@ -7,6 +7,7 @@ sources:
     description: Fonte dos dados de vendas vindos do SAP da Adventure Works  
     tables:
       - name: address
+        description: Tabela de endereços de vendas vindos do SAP
         columns:
           - name: addressid
             tests:
@@ -14,6 +15,7 @@ sources:
               - not_null
 
       - name: stateprovince
+        description: Tabela de estados de venda de produtos vindo do SAP
         columns:
           - name: stateprovinceid
             tests:
@@ -21,11 +23,33 @@ sources:
               - not_null
               
       - name: countryregion
+        description: Tabela de países venda de produtos vindo do SAP
         columns:
           - name: countryregioncode
             tests:
               - unique
               - not_null
 
+      - name: product
+        description: Tabela de produtos existentes da adventure works
+        columns:
+          - name: productid
+            tests:
+              - unique
+              - not_null
 
-  
+      - name: productsubcategory
+        description: Tabela de subcategorias de produtos existentes da adventure works
+        columns:
+          - name: productsubcategoryid
+            tests:
+              - unique
+              - not_null
+
+      - name: productcategory
+        description: Tabela de categorias de produtos existentes da adventure works
+        columns:
+          - name: productcategoryid
+            tests:
+              - unique
+              - not_null

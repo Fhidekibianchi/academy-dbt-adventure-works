@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_produtos
+    description: tabela dimensão de produtos vendidos pela da adventure works
+    columns:
+      - name: id_produto
+        description: Chave primaria da tabela produtos
+        tests:
+          - unique
+          - not_null
+
+      - name: nome_produto
+        description: Nome do produto
+
+      - name: categoria_produto
+        description: Categoria que o produto pertence
+
+      - name: subcategoria_produto
+        description: Subcategoria que o produto pertence
+
+      - name: nivel_estoque_seguranca
+        description: Estoque mínimo para que não haja ruptura de estoque nas vendas
+
+      - name: nivel_para_reabastecer_estoque
+        description: Nível de estoque mínimo para acionar gatilho de pedido ou produção, e reabastecer o estoque
+
+      - name: custo
+        description: Custo de produção ou compra do produto
+
+      - name: preco_listado
+        description: Preço de comercialização do produto

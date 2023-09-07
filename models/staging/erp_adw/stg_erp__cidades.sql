@@ -1,11 +1,11 @@
 WITH
     source_address AS (
         SELECT 
-            addressid AS id_endereco					
-            ,stateprovinceid AS id_estado
-            ,addressline1 AS endereco						
+             CAST(addressid AS INT) AS id_endereco					
+            ,CAST(stateprovinceid AS INT) AS id_estado
+            ,CAST(addressline1 AS STRING) AS endereco						
             --,addressline2						
-            ,city AS cidade	       						
+            ,CAST(city AS STRING) AS cidade	       						
             --,postalcode						
             --,spatiallocation						
             --,rowguid						
