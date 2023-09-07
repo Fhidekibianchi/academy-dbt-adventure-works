@@ -2,10 +2,10 @@ WITH
     source_address AS (
         SELECT 
             addressid AS id_endereco					
-            --,addressline1						
+            ,stateprovinceid AS id_estado
+            ,addressline1 AS endereco						
             --,addressline2						
-            ,city AS cidade	
-            ,stateprovinceid AS id_estado						
+            ,city AS cidade	       						
             --,postalcode						
             --,spatiallocation						
             --,rowguid						

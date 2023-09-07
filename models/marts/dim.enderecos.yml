@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_localizacoes
+    description: dimensão de localizações da adventure works
+    columns:
+      - name: id_endereco
+        description: Chave primaria da tabela endereços
+        tests:
+          - unique
+          - not_null
+            
+      - name: endereco
+        description: Endereco de entrega dos pedidos
+
+      - name: cidade
+        description: Cidade que foi entregue o pedido
+
+      - name: codigo_estado
+        description: Sigla do estado de entrega
+
+      - name: estado
+        description: Nome do estado
+
+      - name: codigo_pais
+        description: Sigla do país
+
+      - name: pais
+        description: Nome do país
