@@ -26,7 +26,7 @@ produtos AS (
         ,p.preco_listado
     FROM produtos p
     LEFT JOIN subcategoria_produto sc
-        ON p.id_subcategoria_produto = sc.id_categoria_produto
+        ON p.id_subcategoria_produto = sc.id_subcategoria_produto
     LEFT JOIN categoria_produto cp
         ON sc.id_categoria_produto = cp.id_categoria_produto
 )
