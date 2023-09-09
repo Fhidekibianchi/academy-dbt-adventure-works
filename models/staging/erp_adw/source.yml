@@ -53,3 +53,36 @@ sources:
             tests:
               - unique
               - not_null
+
+      - name: salesorderheader
+        description: Tabela vendas da adventure works. Uma linha por pedido. Contém o status do pedido
+        columns:
+          - name: salesorderid
+            tests:
+              - unique
+              - not_null
+
+      - name: salesorderdetail
+        description: Detalha cada pedido da tabela de vendas, mostrando produtos, quantidades, preços e descontos
+
+      - name: specialofferproduct
+        description: Tabela que liga as promoções aos produtos que estão sendo atribuídos essas condições especiais
+
+      - name: specialoffer
+        description: Tabela dos descontos e condições especiais de pagamento
+        columns:
+          - name: specialofferid
+            tests:
+              - unique
+              - not_null
+      
+      - name: salesreason
+        description: Tabela com os motivadores de compra por parte dos clientes
+        columns:
+          - name: salesreasonid
+            tests:
+              - unique
+              - not_null
+
+      - name: salesorderheadersalesreason
+        description: Tabela que junta os pedidos com os motivos de compra
