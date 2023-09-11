@@ -29,10 +29,10 @@ WITH pedidos AS (
         ,pd.data_envio
         ,pd.status
         ,pd.venda_online
-        --,pd.valor_pedido 
-        --,pd.valor_impostos
-        --,pd.valor_frete
-        --,pd.valor_pedido_total
+        ,pd.valor_pedido 
+        ,pd.valor_impostos
+        ,pd.valor_frete
+        ,pd.valor_pedido_total
     FROM pedidos_itens pdi
     LEFT JOIN pedidos pd
         ON pdi.id_pedido = pd.id_pedido
