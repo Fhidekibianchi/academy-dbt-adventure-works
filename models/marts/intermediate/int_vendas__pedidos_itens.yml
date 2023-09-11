@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_vendas__pedidos_itens
+    description: Tabela intermediária pré fato de vendas da adventure works
+    columns:
+      - name: pk_vendas
+        description: Chave primaria da tabela intermediária de vendas
+        tests:
+          - unique
+          - not_null
