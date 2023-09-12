@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: dim_motivos
+  - name: dim_motivo_compra
     description: tabela dimensão de motivos que levaram os clientes a realizarem suas compras adventure works
     columns:
-      - name: id_pedidos
+      - name: id_pedido
         description: Chave primaria da tabela de motivos, porém é uma chave estrangeira, pois deriva da fct_vendas
         tests:
           - unique
