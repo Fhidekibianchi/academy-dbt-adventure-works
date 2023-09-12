@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: dim_motivos
+    description: tabela dimensão de motivos que levaram os clientes a realizarem suas compras adventure works
+    columns:
+      - name: id_pedidos
+        description: Chave primaria da tabela de motivos, porém é uma chave estrangeira, pois deriva da fct_vendas
+        tests:
+          - unique
+          - not_null
+
+      - name: preco
+        description: Coluna com flag que indica se o cliente fez a compra por conta do preço
+
+      - name: em_promocao
+        description: Coluna com flag que indica se o cliente fez a compra por conta de uma promoção
+
+      - name: anuncio_revista
+        description: Coluna com flag que indica se o cliente fez a compra após ver um anúncio em revista
+
+      - name: anuncio_televisao
+        description: Coluna com flag que indica se o cliente fez a compra após ver um anúncio na televisão
+
+      - name: fabricante
+        description: Coluna com flag que indica se o cliente fez a compra por conta do fabricante do produto
+
+      - name: avaliacoes_clientes
+        description: Coluna com flag que indica se o cliente fez a compra por conta das avaliações dos clientes
+
+      - name: eventos_de_demonstracao
+        description: Coluna com flag que indica se o cliente fez a compra após participarem de eventos de demonstração
+
+      - name: patrocinio
+        description: Coluna com flag que indica se o cliente fez a compra por conta de atletas patrocinados
+
+      - name: qualidade
+        description: Coluna com flag que indica se o cliente fez a compra por conta da qualidade dos produtos
+
+      - name: outros
+        description: Coluna com flag que indica se o cliente fez a compra por conta de outros motivos além dos citados
+
+      - name: tipo_motivo_outros
+        description: Coluna com flag que indica se o cliente fez a compra por conta de um motivo da categoria outros
+
+      - name: tipo_motivo_marketing
+        description: Coluna com flag que indica se o cliente fez a compra por conta de um motivo da categoria marketing
+
+      - name: tipo_motivo_promo
+        description: Coluna com flag que indica se o cliente fez a compra por conta de um motivo da categoria promoção
+
+
+
+      
