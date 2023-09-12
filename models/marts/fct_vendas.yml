@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: fct_vendas
+    description: tabela fato de vendas, por produto em cada pedido, da adventure works
+    columns:
+      - name: pk_vendas
+        description: Chave primaria da tabela produtos
+        tests:
+          - unique
+          - not_null
+
+      - name: id_produto
+        description: id do produto
+
+      - name: id_endereco
+        description: id do endereço de entrega
+
+      - name: id_pedido
+        description: Id do pedido
+
+      - name: id_cliente
+        description: Id de identificação do cliente
+
+      - name: id_vendedor
+        description: Id do vendedor
+
+      - name: id_territorio
+        description: Id de identificação geográfica do pedido
+
+      - name: id_metodo_envio
+        description: Id do método de envio
+
+      - name: id_cartao_credito
+        description: Id do cartão de crédito
+
+      - name: id_cambio
+        description: Id da operação de cambio
+
+      - name: id_detalhe_pedido
+        description: Id dos detalhes do pedido
+
+      - name: id_oferta
+        description: Id do tipo de oferta
+
+      - name: data_pedido
+        description: Data que o pedido foi criado
+
+      - name: data_faturamento
+        description: Data que o pedido foi faturado
+
+      - name: data_envio
+        description: Data que os itens do pedido foram enviados para o cliente
+
+      - name: status
+        description: Status do pedido
+
+      - name: venda_online
+        description: Flag indicando se foi um pedido online ou não
+
+      - name: nome_produto
+        description: Nome do produto vendido
+
+      - name: categoria_produto
+        description: Categoria do produto vendido
+
+      - name: cidade
+        description: Cidade para onde os produtos serão enviados
+
+      - name: estado
+        description: Estado para onde os produtos serão enviados
+
+      - name: pais
+        description: País para onde os produtos serão enviados
+
+      - name: quantidade
+        description: Quantidade pedida do produto
+
+      - name: preco_unitario
+        description: Preço unitário do produto pedido
+
+      - name: desconto_percentual_por_unidade
+        description: Desconto percentual do produto
+
+      - name: valor_imposto_pedido_total
+        description: Valor do imposto cobrado sobre o pedido total
+
+      - name: valor_frete_pedido_total
+        description: Valor do frete cobrado sobre o pedido total
+
+      - name: valor_total_negociado
+        description: Valor do preço unitário do item, multiplicado pela quantidade pedida
+
+      - name: valor_total_negociado_liquido
+        description: Valor do preço unitário do item, multiplicado pela quantidade pedida, menos o desconto aplicado no item
+
+      - name: frete_por_item
+        description: Valor do frete cobrado sobre o pedido cada item
+
+      - name: imposto_por_item
+        description: Valor do imposto cobrado sobre cada item
