@@ -50,7 +50,7 @@ WITH pedidos_motivos AS (
             ELSE 0 END AS tipo_motivo_promocao
     FROM join_motivos    
 )
-, motivos_final AS (
+, motivos_final_num AS (
     SELECT
          DISTINCT(id_pedido) AS id_pedido
         ,SUM(price) AS preco
@@ -69,5 +69,26 @@ WITH pedidos_motivos AS (
     FROM motivos_transpostos
     GROUP BY 1
 )
+, motivos_final AS (
+    SELECT 
+        id_pedido
+        ,CAST(CASE WHEN preco = 1 THEN True ELSE False END AS BOOL) AS preco 
+        ,CAST(CASE WHEN em_promocao = 1 THEN True ELSE False END AS BOOL) AS em_promocao 
+        ,CAST(CASE WHEN anuncio_revista = 1 THEN True ELSE False END AS BOOL) AS anuncio_revista 
+        ,CAST(CASE WHEN anuncio_televisao = 1 THEN True ELSE False END AS BOOL) AS anuncio_televisao
+        ,CAST(CASE WHEN fabricante = 1 THEN True ELSE False END AS BOOL) AS fabricante
+        ,CAST(CASE WHEN avaliacoes_clientes = 1 THEN True ELSE False END AS BOOL) AS avaliacoes_clientes
+        ,CAST(CASE WHEN eventos_de_demonstracao = 1 THEN True ELSE False END AS BOOL) AS eventos_de_demonstracao
+        ,CAST(CASE WHEN patrocinio = 1 THEN True ELSE False END AS BOOL) AS patrocinio
+        ,CAST(CASE WHEN qualidade = 1 THEN True ELSE False END AS BOOL) AS qualidade
+        ,CAST(CASE WHEN outros = 1 THEN True ELSE False END AS BOOL) AS outros
+        ,CAST(CASE WHEN tipo_motivo_outros = 1 THEN True ELSE False END AS BOOL) AS tipo_motivo_outros
+        ,CAST(CASE WHEN tipo_motivo_marketing = 1 THEN True ELSE False END AS BOOL) AS tipo_motivo_marketing
+        ,CAST(CASE WHEN tipo_motivo_promocao = 1 THEN True ELSE False END AS BOOL) AS tipo_motivo_promo
+    FROM motivos_final_num
+
+
+)
+
 SELECT *
 FROM motivos_final
