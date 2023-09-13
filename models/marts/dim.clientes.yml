@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_clientes
+    description: tabela dimensão dos clientes da adventure works
+    columns:
+      - name: id_cliente
+        description: Chave primaria da tabela de tipos de cartão
+        tests:
+          - unique
+          - not_null
+
+      - name: id_entidade
+        description: Id da pessoa ou loja que é cliente
+
+      - name: nome_cliente
+        description: Nome da pessoa ou loja que é cliente
+
+      - name: cliente_possui_loja
+        description: Mostra se a pessoa cliente também possui uma loja
+
+      - name: nome_loja
+        description: Caso a pessoa também possua uma loja, informa o nome da loja
+
+
+
