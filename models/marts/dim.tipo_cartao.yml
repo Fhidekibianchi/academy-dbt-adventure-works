@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: dim_tipo_cartao
+    description: tabela dimensão dos tipos de cartões de crédito utilizados nas compras
+    columns:
+      - name: id_cartao_credito
+        description: Chave primaria da tabela de tipos de cartão
+        tests:
+          - unique
+          - not_null
+
+      - name: tipo_cartao
+        description: Tipo do cartão utilizado na compra
