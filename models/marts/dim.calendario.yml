@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_calendario
+    description: tabela dimensão com as datas
+    columns:
+      - name: id_data
+        description: Chave primaria da tabela calendario
+        tests:
+          - unique
+          - not_null
+
+      - name: data
+        description: Data propriamente dita
+
+      - name: ano
+        description: Ano referente à data
+
+      - name: semana_ano
+        description: Número da semana no ano em questão
+
+      - name: dia_ano
+        description: Número do dia do ano em questão
+
+      - name: mes
+        description: Mês referente à data
+
+      - name: nome_mes
+        description: Nome do mês em questão
+
+      - name: dia_da_semana
+        description: Número do dia da semana em questão
+
+      - name: nome_dia_da_semana
+        description: Nome do dia da semana
+
+      - name: dia_util
+        description: Indica se o dia da semana é útil ou não (entre segunda e sexta)
+      
