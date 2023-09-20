@@ -9,7 +9,7 @@ source_pedidos AS (
         ,CAST(billtoaddressid AS INT) AS id_endereco_cobranca
         ,CAST(shiptoaddressid AS INT) AS id_endereco
         ,CAST(shipmethodid AS INT) AS id_metodo_envio
-        ,CAST(creditcardid AS INT) AS id_cartao_credito
+        ,CAST(creditcardid AS STRING) AS id_cartao_credito
         ,CAST(currencyrateid AS INT) AS id_cambio
         --,CAST(revisionnumber AS INT) AS 
         ,CAST(orderdate AS TIMESTAMP) AS data_pedido

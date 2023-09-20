@@ -16,7 +16,7 @@ WITH pedidos AS (
         ,pd.id_territorio 
         ,pd.id_endereco
         ,pd.id_metodo_envio
-        ,pd.id_cartao_credito
+        ,CASE WHEN pd.id_cartao_credito IS NULL THEN 'na' ELSE pd.id_cartao_credito END AS id_cartao_credito
         ,pd.id_cambio
         ,pdi.id_detalhe_pedido
         ,pdi.id_produto
