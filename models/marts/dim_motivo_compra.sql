@@ -72,23 +72,38 @@ WITH pedidos_motivos AS (
 , motivos_final AS (
     SELECT 
         id_pedido
-        ,CAST(CASE WHEN preco = 1 THEN True ELSE False END AS BOOL) AS preco 
-        ,CAST(CASE WHEN em_promocao = 1 THEN True ELSE False END AS BOOL) AS em_promocao 
-        ,CAST(CASE WHEN anuncio_revista = 1 THEN True ELSE False END AS BOOL) AS anuncio_revista 
-        ,CAST(CASE WHEN anuncio_televisao = 1 THEN True ELSE False END AS BOOL) AS anuncio_televisao
-        ,CAST(CASE WHEN fabricante = 1 THEN True ELSE False END AS BOOL) AS fabricante
-        ,CAST(CASE WHEN avaliacoes_clientes = 1 THEN True ELSE False END AS BOOL) AS avaliacoes_clientes
-        ,CAST(CASE WHEN eventos_de_demonstracao = 1 THEN True ELSE False END AS BOOL) AS eventos_de_demonstracao
-        ,CAST(CASE WHEN patrocinio = 1 THEN True ELSE False END AS BOOL) AS patrocinio
-        ,CAST(CASE WHEN qualidade = 1 THEN True ELSE False END AS BOOL) AS qualidade
-        ,CAST(CASE WHEN outros = 1 THEN True ELSE False END AS BOOL) AS outros
-        ,CAST(CASE WHEN tipo_motivo_outros = 1 THEN True ELSE False END AS BOOL) AS tipo_motivo_outros
-        ,CAST(CASE WHEN tipo_motivo_marketing = 1 THEN True ELSE False END AS BOOL) AS tipo_motivo_marketing
-        ,CAST(CASE WHEN tipo_motivo_promocao = 1 THEN True ELSE False END AS BOOL) AS tipo_motivo_promo
+        ,CAST(CASE WHEN preco = 1 THEN 'Preço' ELSE null END AS STRING) AS preco 
+        ,CAST(CASE WHEN em_promocao = 1 THEN 'Em_Promoção' ELSE null END AS STRING) AS em_promocao 
+        ,CAST(CASE WHEN anuncio_revista = 1 THEN 'Anúncio_Revista' ELSE null END AS STRING) AS anuncio_revista 
+        ,CAST(CASE WHEN anuncio_televisao = 1 THEN 'Anúncio_Televisão' ELSE null END AS STRING) AS anuncio_televisao
+        ,CAST(CASE WHEN fabricante = 1 THEN 'Fabricante' ELSE null END AS STRING) AS fabricante
+        ,CAST(CASE WHEN avaliacoes_clientes = 1 THEN 'Avaliações_de_Clientes' ELSE null END AS STRING) AS avaliacoes_clientes
+        ,CAST(CASE WHEN eventos_de_demonstracao = 1 THEN 'Eventos_de_Demoenstração' ELSE null END AS STRING) AS eventos_de_demonstracao
+        ,CAST(CASE WHEN patrocinio = 1 THEN 'Patrocínio' ELSE null END AS STRING) AS patrocinio
+        ,CAST(CASE WHEN qualidade = 1 THEN 'Qualidade' ELSE null END AS STRING) AS qualidade
+        ,CAST(CASE WHEN outros = 1 THEN 'Outros' ELSE null END AS STRING) AS outros
+        ,CAST(CASE WHEN tipo_motivo_outros = 1 THEN 'Outros' ELSE null END AS STRING) AS tipo_motivo_outros
+        ,CAST(CASE WHEN tipo_motivo_marketing = 1 THEN 'Marketing' ELSE null END AS STRING) AS tipo_motivo_marketing
+        ,CAST(CASE WHEN tipo_motivo_promocao = 1 THEN 'Promoção' ELSE null END AS STRING) AS tipo_motivo_promocao
     FROM motivos_final_num
+)
+, tabela_motivos AS (
 
-
+    SELECT 
+    id_pedido
+        ,TRIM(CONCAT(IF(preco IS NOT NULL, preco,''),IF(em_promocao IS NOT NULL,CONCAT('; ',em_promocao) ,''),IF(anuncio_revista IS NOT NULL,CONCAT('; ',anuncio_revista) ,''),IF(anuncio_televisao IS NOT NULL,CONCAT('; ',anuncio_televisao) ,'')
+                ,IF(fabricante IS NOT NULL,CONCAT('; ',fabricante) ,''),IF(avaliacoes_clientes IS NOT NULL,CONCAT('; ',avaliacoes_clientes) ,''),IF(eventos_de_demonstracao IS NOT NULL,CONCAT('; ',eventos_de_demonstracao) ,'')
+                ,IF(patrocinio IS NOT NULL,CONCAT('; ',patrocinio) ,''),IF(qualidade IS NOT NULL,CONCAT('; ',qualidade) ,''),IF(outros IS NOT NULL,CONCAT('; ',outros) ,''))) AS motivo_compra
+        ,TRIM(CONCAT(IF(tipo_motivo_promocao IS NOT NULL, tipo_motivo_promocao,''), IF(tipo_motivo_marketing IS NOT NULL, CONCAT('; ',tipo_motivo_marketing), ''),IF(tipo_motivo_outros IS NOT NULL, CONCAT('; ',tipo_motivo_outros), ''))) AS tipo_motivo_compra
+    FROM motivos_final
+)
+, tabela_motivos_final AS (
+    SELECT
+        id_pedido
+        ,CASE WHEN STARTS_WITH(motivo_compra, ';') = TRUE THEN LTRIM(motivo_compra, ';') ELSE motivo_compra END AS motivo_compra
+        ,CASE WHEN STARTS_WITH(tipo_motivo_compra, ';') = TRUE THEN LTRIM(tipo_motivo_compra, ';') ELSE tipo_motivo_compra END AS tipo_motivo_compra
+    FROM tabela_motivos
 )
 
 SELECT *
-FROM motivos_final
+FROM tabela_motivos_final
